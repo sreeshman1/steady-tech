@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ContactService } from '../contact.service';
+import { Contact } from '../contact.model';
+
 
 @Component({
   selector: 'app-contact',
@@ -7,20 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  name: string;
-  company: string;
-  email: string;
-  phone: string;
-  message: string;
 
-  constructor() { }
+  contact = new Contact();
+  submitted = false;
+  showThanks = true;
+  constructor(private contactService: ContactService)  { }
 
   ngOnInit() {
   }
 
   processForm() {
-    const allInfo = `My name is ${this.name}. My company is ${this.company}. My email is ${this.email}. My phone number is ${this.phone}. My message is ${this.message}`;
-    alert(allInfo); 
+    this.contactService.saveContact(this.contact)
+    .subscribe(contact => {
+      console.log('contact saved.', contact);
+    });
+    this.submitted = true;
+    this.showThanks = false;
   }
 
 }

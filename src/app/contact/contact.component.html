@@ -1,26 +1,124 @@
 <div class="container-fluid bg-light">
-<h4>Want to know more? Contract us below and we’ll reach out to tell you when we launch and to discuss how we could work together</h4>
-<form ngSubmit="processForm()">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder="Enter Name" ngModel="name">
+  <h2>Want to know more?</h2>
+  <h3>Contact us below and we’ll reach out to tell you when we launch and to discuss how we could work together</h3>
+  <div [hidden]="submitted">
+    <form  #contactForm="ngForm" (ngSubmit)="processForm()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="name" 
+          name="name"
+          maxLength= 75 
+          aria-describedby="name" 
+          placeholder="Enter Name" 
+          [(ngModel)]="contact.name" #name="ngModel"
+          required 
+          minlength="5">
+        <div *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+          class="alert alert-danger">
+          <div *ngIf="name?.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="name?.errors.minlength">
+            Name must be at least 5 characters long.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="companyName">Company Name</label>
+        <input type="text" 
+          class="form-control" 
+          id="company" 
+          name="company"
+          maxLength= 75 
+          placeholder="Enter Company Name" 
+          [(ngModel)]="contact.company" #company="ngModel"
+          required minlength="5">
+          <div *ngIf="company?.invalid && (company?.dirty || company?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="company?.errors.required">
+              Company name is required.
+            </div>
+            <div *ngIf="company?.errors.minlength">
+              Company must be at least 5 characters long.
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" 
+          class="form-control" 
+          id="email" 
+          name="email"
+          placeholder="Enter Email" 
+          [(ngModel)]="contact.email" #email="ngModel"
+          required 
+          minlength="10"
+          email="true">
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="email?.errors?.required">
+              Email is required.
+            </div>
+            <div *ngIf="email?.errors.minlength">
+              Email must be at least 10 characters long.
+            </div>
+            <div *ngIf="email?.errors.email">
+              Please enter valid email.
+            </div>          </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" 
+            class="form-control" 
+            id="phone"
+            name="phone" 
+            maxLength= 12 
+            placeholder="Enter Phone Number" 
+            [(ngModel)]="contact.phone" #phone="ngModel"
+            required 
+            pattern="[0-9]+"
+            minlength="10">
+          <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="phone?.errors.required">
+              Phone Number is required.
+            </div>
+            <div *ngIf="phone?.errors.minlength">
+              Phone Number must be at least 10 characters long.
+            </div>
+            <div *ngIf="phone?.errors.pattern">
+              Enter valid Phone Number.
+            </div>
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <input type="text" 
+          class="form-control form-control-lg" 
+          maxLength=500 
+          id="message"
+          name="message" 
+          placeholder="Message" 
+          [(ngModel)]="contact.message" #mesage="ngModel"
+          required 
+          minlength="10">
+          <div *ngIf="message?.invalid && (message?.dirty || message?.touched)"
+            class="alert alert-danger">
+            <div *ngIf="message?.errors.required">
+              Message is required.
+            </div>
+            <div *ngIf="message?.errors.minlength">
+              Message must be at least 10 characters long.
+            </div>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+    </form>
   </div>
-  <div class="form-group">
-    <label for="companyName">Company Name</label>
-    <input type="text" class="form-control" id="inputCompanyName" placeholder="Enter Company Name" ngModel="company">
+  <div [hidden]="showThanks">
+    Thank you for contacting us! We have received your information and will contact you soon!
   </div>
-    <div class="form-group">
-    <label for="email">Email Address</label>
-    <input type="email" class="form-control" id="inputEmail" placeholder="Enter Email" ngModel="email">
-  </div>
-   <div class="form-group">
-    <label for="phone">Company Name</label>
-    <input type="text" class="form-control" id="inputPhone" placeholder="Enter Phone Number" ngModel="phone">
-  </div>
-  <div class="form-group">
-    <label for="message">Message</label>
-    <input type="text" class="form-control form-control-lg" id="inputMessage" placeholder="Message" ngModel="message">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
 </div>

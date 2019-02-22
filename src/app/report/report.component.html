@@ -1,0 +1,13 @@
+<div class="container bg-light">
+<h2>All Contacts</h2>
+ 
+<ul class="contacts">
+  <li *ngFor="let contact of contacts">
+    <span class="badge">{{contact.name}},</span>
+    <span class="badge">{{contact.company}},</span>
+    <span class="badge">{{contact.email}},</span>
+    <span class="badge">{{contact.phone}},</span>
+    <span class="message">{{contact.message}}</span>
+  </li>
+</ul>
+</div>
