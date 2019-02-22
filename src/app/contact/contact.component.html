@@ -41,7 +41,7 @@
               Company name is required.
             </div>
             <div *ngIf="company?.errors.minlength">
-              Company must be at least 5 characters long.
+              Company name must be at least 5 characters long.
             </div>
           </div>
       </div>
@@ -65,7 +65,7 @@
               Email must be at least 10 characters long.
             </div>
             <div *ngIf="email?.errors.email">
-              Please enter valid email.
+              Please enter a valid email.
             </div>          </div>
       </div>
       <div class="form-group">
@@ -101,7 +101,7 @@
           id="message"
           name="message" 
           placeholder="Message" 
-          [(ngModel)]="contact.message" #mesage="ngModel"
+          [(ngModel)]="contact.message" #message="ngModel"
           required 
           minlength="10">
           <div *ngIf="message?.invalid && (message?.dirty || message?.touched)"
@@ -114,11 +114,11 @@
             </div>
           </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+      <button type="submit" class="btn btn-primary text-center" [disabled]="contactForm.invalid">Submit</button>
     </form>
   </div>
   <div [hidden]="showThanks">
-    Thank you for contacting us! We have received your information and will contact you soon!
+    Thank you for contacting us! We have received your information and will reply to you soon!
   </div>
 
 </div>
