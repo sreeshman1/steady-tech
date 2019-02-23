@@ -5,12 +5,17 @@ import {ContactComponent} from './contact/contact.component'
 import {HomeComponent} from './home/home.component'
 import {BlogComponent} from './blog/blog.component'
 import {ReportComponent} from './report/report.component'
+import { PartnersComponent } from './partners/partners.component'
 
 const routes: Routes = [
   {
 	path:'',
 	pathMatch: 'full',
 	component: HomeComponent
+  },
+  {
+    path: 'partners',
+    component: PartnersComponent
   },
   {
 	path: 'contact',

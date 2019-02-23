@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { PartnersComponent } from './partners/partners.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BlogComponent } from './blog/blog.component';
@@ -24,6 +25,7 @@ import { ReportComponent } from './report/report.component';
     AppComponent,
     ContactComponent,
     HomeComponent,
+    PartnersComponent,
     HeaderComponent,
     FooterComponent,
     BlogComponent,
